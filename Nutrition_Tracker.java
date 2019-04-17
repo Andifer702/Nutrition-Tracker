@@ -43,6 +43,7 @@ public class Nutrition_Tracker {
     private JTextField caloriesTextfield;
     private JButton inputFoodButton;
     private JButton clearButton;
+    private JButton search;
     private JLabel water;
     private JTextField waterAmount;
     private JButton inputWaterButton;
@@ -62,7 +63,7 @@ public class Nutrition_Tracker {
 
     private void buildGUI() {
         mainFrame = new JFrame("Nutrition Tracker");
-        mainFrame.setSize(400, 600);
+        mainFrame.setSize(450, 600);
 
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
@@ -86,9 +87,6 @@ public class Nutrition_Tracker {
         String formattedDate = String.format("%tD", date);
         
         createFile();
-        if(parseFile("Eat_History.txt", formattedDate)==0){
-            writeToFile(formattedDate);
-        }
         
         //defining text styles
         final SimpleAttributeSet center = new SimpleAttributeSet();
@@ -132,6 +130,7 @@ public class Nutrition_Tracker {
         caloriesTextfield = new JTextField();
         caloriesTextfield.setPreferredSize(new Dimension(60, 25));
         inputFoodButton = new JButton("Submit");
+        search = new JButton("Search");
 
         water = new JLabel("Water: ");
         waterAmount = new JTextField();
@@ -139,7 +138,7 @@ public class Nutrition_Tracker {
         waterUnit = new JLabel("oz ");
         inputWaterButton = new JButton("Submit");
 
-        blank = new JLabel("                     ");
+        blank = new JLabel("           ");
         clearButton = new JButton("Clear");
 
         //add components to the top panel
@@ -147,13 +146,13 @@ public class Nutrition_Tracker {
         inputFoodPanel.add(foodTextfield);
         inputFoodPanel.add(cal);
         inputFoodPanel.add(caloriesTextfield);
+        inputFoodPanel.add(search);
         inputFoodPanel.add(inputFoodButton);
         inputFoodPanel.add(water);
         inputFoodPanel.add(waterAmount);
         inputFoodPanel.add(waterUnit);
         inputFoodPanel.add(blank);
         inputFoodPanel.add(inputWaterButton);
-        inputFoodPanel.add(blank);
         inputFoodPanel.add(clearButton);
 
         //add scrollable textpane in the center
@@ -201,7 +200,7 @@ public class Nutrition_Tracker {
                     
                     //formats the string then write to file
                     foodInput = foodInput.replaceAll(" ", "_");
-                    writeToFile(foodInput + " " + caloriesTextfield.getText());
+                    writeToFile(formattedDate + " " + foodInput + " " + caloriesTextfield.getText());
                 } else {
                     JOptionPane.showMessageDialog(null, "Please input integer for calories");
                 }
@@ -234,7 +233,7 @@ public class Nutrition_Tracker {
                     double waterInput = Double.parseDouble(waterAmount.getText());
                     userWater.addWater(waterInput);
                     foodSummaryText.append("You drank " + waterInput + " oz of water.\n");
-                    writeToFile("water " + waterAmount.getText());
+                    writeToFile(formattedDate + " water " + waterAmount.getText());
                 } else {
                     JOptionPane.showMessageDialog(null, "Please use integer/double for water drank");
                 }
@@ -253,6 +252,13 @@ public class Nutrition_Tracker {
                 } catch (BadLocationException ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+        
+        //button action for search
+        search.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                //perform search for food
             }
         });
 
