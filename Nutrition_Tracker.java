@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.*;
+import org.jfree.chart.ChartPanel;
 
 /**
  *
@@ -53,6 +54,9 @@ public class Nutrition_Tracker {
     private Date date;
     private Calories userCalorie;
     private Water userWater;
+    
+    private GraphUserInfo userGraph;
+    private ChartPanel chartPanel;
 
     private BufferedWriter writer;
 
@@ -174,8 +178,12 @@ public class Nutrition_Tracker {
 
         //Build Graph GUI
         graphPanel = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Placeholder for Graph");
-        graphPanel.add(label, BorderLayout.CENTER);
+        userGraph = new GraphUserInfo();
+        
+        chartPanel = new ChartPanel(userGraph.calorieGraph);
+        
+        
+        graphPanel.add(chartPanel, BorderLayout.CENTER);
 
         //add Graph GUI to the 3rd tab
         tabPane.addTab("Graph", graphPanel);
