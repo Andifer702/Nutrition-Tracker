@@ -24,13 +24,15 @@ public class GraphUserInfo {
 
     DefaultCategoryDataset dataset;
     JFreeChart calorieGraph;
-
+    
+    String username;
     String date;
     String date2;
     int calories;
     int calorieHistory[];
 
-    public GraphUserInfo() {
+    public GraphUserInfo(UserProfile currentUser) {
+    	username = currentUser.getUsername();
         dataset = new DefaultCategoryDataset();
         readFile();
         for (int i = 0; calorieHistory.length > i; i++) {
@@ -52,7 +54,7 @@ public class GraphUserInfo {
         try {
             calorieHistory = new int[30];
             int i = 0;
-            BufferedReader calorieFile = new BufferedReader(new FileReader("Eat_History.txt"));
+            BufferedReader calorieFile = new BufferedReader(new FileReader(username + ".txt"));
 
             Scanner sc = new Scanner(calorieFile);
             while (sc.hasNextLine()) {
