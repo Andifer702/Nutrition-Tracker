@@ -24,6 +24,11 @@ public class Water {
     public Water(double currentIntake){
         this.waterIntake = currentIntake;
     }
+    public Water(double currentIntake, ArrayList<String> waterDates, ArrayList<Integer> waterHistory) {
+    	waterIntake = currentIntake;
+    	this.waterDates = waterDates;
+    	this.waterHistory = waterHistory;
+    }
     
     public void addWater(double currentIntake){
         waterIntake += currentIntake;
