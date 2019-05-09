@@ -1,3 +1,9 @@
+/*
+ * Keeps track of user's current weight and history.
+ * 
+ * @authors Bre Chung, Dewayne Edwards, Jacob Heddings, Renan Jorge, Joon Park
+ */
+
 package nutrition_tracker;
 
 import java.text.DateFormat;
@@ -6,16 +12,18 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Weight {
-	private float currentWeight;
-	private ArrayList<String> weightDates;
-	private ArrayList<Float> weightHistory;
+	private float currentWeight; //user's current weight
+	private ArrayList<String> weightDates; //dates user previously logged weight.
+	private ArrayList<Float> weightHistory; //previously logged weights
 	
+	//constructor; new user.
 	public Weight (float currentWeight) {
 		this.currentWeight = currentWeight;
-		weightDates = new ArrayList<String>();
+		weightDates = new ArrayList<String>(); 
 		weightHistory = new ArrayList<Float>();
 	}
 	
+	//constructor; loaded previously logged weights.
 	public Weight (float currentWeight, ArrayList<String> weightDates, 
 				 ArrayList<Float> weightHistory) {
 		this.currentWeight = currentWeight;
@@ -23,6 +31,7 @@ public class Weight {
 		this.weightHistory = weightHistory;
 	}	
 	
+	//setters and getters
 	public float getCurrentWeight() {
 		return currentWeight;
 	}
@@ -35,6 +44,7 @@ public class Weight {
 		return weightHistory;
 	}	
 	
+	//add a new weight to previous weight history.
 	public void addNewWeight (float newWeight) {
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");

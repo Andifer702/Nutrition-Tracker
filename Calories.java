@@ -1,25 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Keeps track of user's current and previous caloric intakes.
+ * 
+ * @authors Bre Chung, Dewayne Edwards, Jacob Heddings, Renan Jorge, Joon Park
  */
+
 package nutrition_tracker;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Andrew
- */
+
 public class Calories {
 
-    private int calorieIntake;
-    private int dailyCalorieCount;
-    private ArrayList<String> dailyFoodCount;
-    private ArrayList<Integer> foodCalorieValue;
-    private ArrayList<String> calorieDates;
-    private ArrayList<Integer> calorieHistory;
+    private int calorieIntake; //allotted calorie intake
+    private int dailyCalorieCount; //total calories for today
+    private ArrayList<String> dailyFoodCount; // foods eaten today
+    private ArrayList<Integer> foodCalorieValue; //calorie values of foods eaten today
+    private ArrayList<String> calorieDates; //dates of logged calories
+    private ArrayList<Integer> calorieHistory; //total calories for each date
     
+    //constructor; new user's manually entered intake
     public Calories(int calorieIntake){
       this.calorieIntake = calorieIntake; 
       dailyCalorieCount = 0;
@@ -29,6 +28,7 @@ public class Calories {
       calorieHistory = new ArrayList<>();
     };
     
+    //constructor; new user's calculated intake
     public Calories(int age, int heightInInches, float weightInPounds, char gender) {
     	
     	//Mifflin-St Jeor Equation
@@ -47,6 +47,7 @@ public class Calories {
     		
     }
     
+    //constructor; previously logged calories for today.
     public Calories (int calorieIntake, int dailyCalorieCount, 
     		ArrayList<String> dailyFoodCount, ArrayList<Integer> foodCalorieValue) {
     	this.calorieIntake = calorieIntake;
@@ -59,6 +60,7 @@ public class Calories {
     	
     }
     
+    //constructor; previously logged calories for today and previous days.
     public Calories (int calorieIntake, int dailyCalorieCount, 
     		ArrayList<String> dailyFoodCount, ArrayList<Integer> foodCalorieValue, 
     		ArrayList<String> calorieDates, ArrayList<Integer> calorieHistory) {
@@ -70,7 +72,9 @@ public class Calories {
         this.calorieHistory = calorieHistory;    	
     	
     }
-
+    
+    //setters and getters
+    
     public int getDailyCalorieCount(){
         return this.dailyCalorieCount;
     }
@@ -79,6 +83,40 @@ public class Calories {
     	return this.calorieIntake;
     }
     
+    public ArrayList<Integer> getCalorieHistory() {
+    	return this.calorieHistory;
+    }
+    
+    public ArrayList<String> getCalorieDates() {
+    	return this.calorieDates;
+    }
+    
+    public ArrayList<String> getDailyFoodCount() {
+    	return this.dailyFoodCount;
+    }    
+    
+    public ArrayList<Integer> getFoodCalorieValue() {
+    	return this.foodCalorieValue;
+    }
+
+    
+    public void setDailyCalorieCount(int dailyCalorieCount) {
+    	this.dailyCalorieCount = dailyCalorieCount;
+    }
+    
+    public void setCalorieIntake(int calorieIntake) {
+    	this.calorieIntake = calorieIntake;
+    }
+    
+    public void setCalorieHistory(ArrayList<Integer> calorieHistory) {
+    	this.calorieHistory = calorieHistory;
+    }
+    
+    public void setCalorieDates(ArrayList<String> calorieDates) {
+    	this.calorieDates = calorieDates;
+    }
+    
+    //add food to today's count
     public void addFood(String foodName, int calorieCount){
         dailyFoodCount.add(foodName);
         foodCalorieValue.add(calorieCount);
