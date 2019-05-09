@@ -21,10 +21,6 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-/**
- *
- * @author Andrew
- */
 public class GraphUserInfo {
 
     DefaultCategoryDataset dataset;
