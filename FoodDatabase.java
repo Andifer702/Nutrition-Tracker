@@ -1,3 +1,8 @@
+/*
+ * Class for retrieving the food data from the txt file.
+ * 
+ * @authors Bre Chung, Dewayne Edwards, Jacob Heddings, Renan Jorge, Joon Park
+ */
 package nutrition_tracker;
 
 import java.io.IOException;
