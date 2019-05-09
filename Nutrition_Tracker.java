@@ -323,7 +323,7 @@ public class Nutrition_Tracker {
 
 					int totalHeight = (footInput * 12) + inchInput;
 					char genChar;
-					if (genderBox.equals(genderList[0])) {
+					if (genderBox.getSelectedItem().equals(genderList[0])) {
 						genChar = 'M';
 					} else {
 						genChar = 'F';
